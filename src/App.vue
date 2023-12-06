@@ -68,7 +68,7 @@ export default {
     });
 
     // generate token
-    generateToken('http://localhost/dhwani/api', userID).then((res) => {
+    generateToken('https://dhwaniastro.democlicks.com/api', userID).then((res) => {
       console.log(res);
       // const appID = 669141563;
       // const serverSecret = "ba36362349d9987625c62cb8030c7683";
