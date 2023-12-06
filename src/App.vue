@@ -8,12 +8,7 @@ import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 // get token
 function generateToken(tokenServerUrl, userID) {
   // Obtain the token interface provided by the App Server
-  return fetch(
-    `${tokenServerUrl}/zego_access_token?userID=${userID}&expired_ts=7200`,
-    {
-      method: 'GET',
-    }
-  ).then((res) => res.json());
+  return fetch(`${tokenServerUrl}/zego_access_token?userID=${userID}&expired_ts=7200`,{method: 'GET'}).then((res) => res.json());
 }
 
 function randomID(len) {
@@ -30,7 +25,8 @@ function randomID(len) {
 }
 
 export function getUrlParams(url) {
-  let urlStr = url.split('?')[1];
+  console.log(url);
+  let urlStr = (url)?url.split('?')[1]:'';
   return new URLSearchParams(urlStr);
 }
 
@@ -72,8 +68,8 @@ export default {
     });
 
     // generate token
-    generateToken('https://dhwaniastro.democlicks.com/', userID).then((res) => {
-
+    generateToken('http://localhost/dhwani/api', userID).then((res) => {
+      console.log(res);
       // const appID = 669141563;
       // const serverSecret = "ba36362349d9987625c62cb8030c7683";
       // const token = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, userID, userName);
