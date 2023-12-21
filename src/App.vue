@@ -25,7 +25,7 @@
           </div>
         </div>
       </div>
-      
+
     </div>
   </div>
 </template>
@@ -107,10 +107,13 @@ export default {
         if (updateType == 'ADD') {
           // New stream added, start playing the stream.
           this.streamID = streamList[0].streamID;
-          console.log('roomStreamUpdate roomID ', roomID, streamList);
+          this.startPlaying();
         } else if (updateType == 'DELETE') {
           // Stream deleted, stop playing the stream.
+          this.stopPlaying();
         }
+
+        console.log('roomStreamUpdate roomID ', roomID, streamList);
       });
 
       this.zg.on('IMRecvBroadcastMessage', (roomID, chatData) => {
@@ -171,8 +174,8 @@ export default {
     token() {
       this.loginRoom();
     },
-    isLogin(){
-      if(this.isLogin==true){
+    isLogin() {
+      if (this.isLogin == true) {
         this.startPlaying();
       }
     }
